@@ -41,3 +41,17 @@ export const getQualityColor = (quality) => {
       return "default";
   }
 };
+
+export const getDeviceType = () => {
+  const ua = navigator.userAgent.toLowerCase();
+ 
+  if (/mobile|iphone|ipod|android.*mobile|windows phone/.test(ua)) {
+    return "mobile";
+  }
+ 
+  if (/ipad|tablet|android(?!.*mobile)/.test(ua)) {
+    return "tablet";
+  }
+ 
+  return "desktop";
+};

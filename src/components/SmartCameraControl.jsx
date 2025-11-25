@@ -9,7 +9,7 @@ import {
 import { Camera } from "@mediapipe/camera_utils";
 import gifshot from "gifshot";
 import SnapshotPreview from "./SnapshotPreview";
-import { getExactAddress } from "./Helper";
+import { getExactAddress, getDeviceType } from "./Helper";
 import { useSomething } from "../utils/hooks/useSomething";
 import {
   computeClarity,
@@ -33,7 +33,7 @@ const SmartCameraControl = ({ blurEnabled = true }) => {
   const faceMeshRef = useRef(null);
   const cameraRef = useRef(null);
   const challengeImageCaptureRef = useRef(null);
-  const [facingMode, setFacingMode] = useState("user");
+  const [facingMode, setFacingMode] = useState( getDeviceType() === "mobile" ? "environment" : "user");
 
   const [blurAmount, setBlurAmount] = useState(12);
   const [brightness, setBrightness] = useState(1);
